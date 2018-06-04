@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Tambah Pesanan</title>
+<style>
+	#td {
+		text-align:center;
+		color:white;
+	}
+	
+	a {
+		text-decoration:none;
+		color:#000;
+	}
+	h1{
+	color:white;
+	}
+	
+	p{
+	color : white;
+	}
+</style>
+</head>
+
+<body background="background.png">
+<h1 align="center">TAMBAH PESANAN</h1>
+<div align="center">
+<div style="width:600px; height:auto; padding:15px; box-shadow:0 0 8px #111;">
+<form method="post" action="tambah_barang.php" enctype="multipart/form-data">
+<table align="center">
+	<tr id="td">
+    	<td>Kode Pemesan</td>
+        <td>Nama Pesanan</td>
+        <td>Harga</td>
+        <td>Jumlah</td>
+    </tr>
+    <tr>
+    	<td><input type="text" name="kd" onKeyPress="return goodchars(event,'1234567890',this)" title="Isi Dengan Angka" required /></td>
+        <td><input type="text" name="nama" name="namacustomer"  maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ',this)" title="Isi Dengan Huruf" required/></td>
+        <td><input type="text" name="hrg" name="namacustomer"  onKeyPress="return goodchars(event,'1234567890',this)" title="Isi Dengan Angka" required/></td>
+        <td><input type="text" name="satuan" onKeyPress="return goodchars(event,'1234567890',this)" title="Isi Dengan Angka" required/></td>
+    </tr>
+    <tr height="10">
+    	<td colspan="4"></td>
+    </tr>
+    <tr>
+    	<td colspan="4" align="center"><input type="submit" value="Simpan" /> &nbsp;&nbsp; <input type="reset" value="Hapus" />&nbsp;&nbsp;<a href="index.php">&lt;&lt; <p>Back TO INDEX</p></a></td>
+
+    </tr>
+</table>
+</form>
+</div>
+</div>
+
+</body>
+</html>
+
+		<script language="javascript">
+function getkey(e)
+{
+if (window.event)
+   return window.event.keyCode;
+else if (e)
+   return e.which;
+else
+   return null;
+}
+function goodchars(e, goods, field)
+{
+var key, keychar;
+key = getkey(e);
+if (key == null) return true;
+ 
+keychar = String.fromCharCode(key);
+keychar = keychar.toLowerCase();
+goods = goods.toLowerCase();
+ 
+// check goodkeys
+if (goods.indexOf(keychar) != -1)
+    return true;
+// control keys
+if ( key==null || key==0 || key==8 || key==9 || key==27 )
+   return true;
+    
+if (key == 13) {
+    var i;
+    for (i = 0; i < field.form.elements.length; i++)
+        if (field == field.form.elements[i])
+            break;
+    i = (i + 1) % field.form.elements.length;
+    field.form.elements[i].focus();
+    return false;
+    };
+// else return false
+return false;
+}
+</script>
